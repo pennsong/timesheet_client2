@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="521b6883-c27d-493d-9a17-b2080d870bbc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/pages/admin/ZhiFu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/TablePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/TablePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/admin/GongSi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/admin/GongSi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/admin/GongZuoJiLu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/admin/GongZuoJiLu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/admin/XiangMu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/admin/XiangMu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/admin/YongHu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/admin/YongHu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/Event.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/Event.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/PPAxios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/PPAxios.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/admin/Admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/admin/Admin.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,14 +15,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/admin/XiangMu.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="399" column="58" selection-start-line="399" selection-start-column="58" selection-end-line="399" selection-end-column="58" />
+            <state relative-caret-position="135">
+              <caret line="396" column="30" lean-forward="true" selection-start-line="396" selection-start-column="30" selection-end-line="396" selection-end-column="30" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/pages/admin/ZhiFu.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="30" column="27" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -70,8 +74,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/admin/Admin.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="775">
-              <caret line="56" column="70" selection-start-line="56" selection-start-column="70" selection-end-line="56" selection-end-column="70" />
+            <state relative-caret-position="720">
+              <caret line="48" column="36" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -83,8 +87,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>pageTitle</find>
-      <find>newText</find>
       <find>queryXiangMu</find>
       <find>GlobalValue</find>
       <find>searchData</find>
@@ -113,11 +115,15 @@
       <find>picker</find>
       <find>list</find>
       <find>pick</find>
+      <find>公司</find>
+      <find>jingE</find>
     </findStrings>
     <replaceStrings>
       <replace>删除&lt;/a&gt;</replace>
       <replace>用户名</replace>
       <replace>recordNewFormConfig</replace>
+      <replace>支付</replace>
+      <replace>jinE</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -141,7 +147,6 @@
         <option value="$PROJECT_DIR$/src/util/InputType.js" />
         <option value="$PROJECT_DIR$/src/pages/admin/GongZuoJiLu.js" />
         <option value="$PROJECT_DIR$/src/pages/admin/YongHu.js" />
-        <option value="$PROJECT_DIR$/src/pages/admin/Admin.js" />
         <option value="$PROJECT_DIR$/src/pages/admin/GongSi.js" />
         <option value="$PROJECT_DIR$/src/component/TablePage.js" />
         <option value="$PROJECT_DIR$/src/util/PPAxios.js" />
@@ -149,6 +154,8 @@
         <option value="$PROJECT_DIR$/src/util/Event.js" />
         <option value="$PROJECT_DIR$/src/pages/admin/XiangMu_bak.js" />
         <option value="$PROJECT_DIR$/src/pages/admin/XiangMu.js" />
+        <option value="$PROJECT_DIR$/src/pages/admin/ZhiFu.js" />
+        <option value="$PROJECT_DIR$/src/pages/admin/Admin.js" />
       </list>
     </option>
   </component>
@@ -217,7 +224,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556900553643" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556902728654" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.jscs" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -311,7 +318,7 @@
       <updated>1556486143545</updated>
       <workItem from="1556486145085" duration="21560000" />
       <workItem from="1556610678512" duration="314000" />
-      <workItem from="1556613882175" duration="44114000" />
+      <workItem from="1556613882175" duration="45385000" />
     </task>
     <task id="LOCAL-00001" summary="before 添加 编辑项目">
       <created>1556796553007</created>
@@ -320,18 +327,24 @@
       <option name="project" value="LOCAL" />
       <updated>1556796553007</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="after 处理了时区转换错误的问题">
+      <created>1556900596625</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1556900596625</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65988000" />
+    <option name="totallyTimeSpent" value="67259000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="227" y="23" width="1693" height="1177" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.739823" visible="true" weight="0.16070345" />
-      <window_info id="Structure" order="1" sideWeight="0.260177" side_tool="true" visible="true" weight="0.16070345" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7398721" visible="true" weight="0.16070345" />
+      <window_info id="Structure" order="1" sideWeight="0.26012793" side_tool="true" visible="true" weight="0.16070345" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
@@ -341,7 +354,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32844242" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.2645951" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.46798494" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.11676083" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -395,7 +408,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="before 添加 编辑项目" />
-    <option name="LAST_COMMIT_MESSAGE" value="before 添加 编辑项目" />
+    <MESSAGE value="after 处理了时区转换错误的问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="after 处理了时区转换错误的问题" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -640,16 +654,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/admin/Admin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="775">
-          <caret line="56" column="70" selection-start-line="56" selection-start-column="70" selection-end-line="56" selection-end-column="70" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/pubsub-js/src/pubsub.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
@@ -679,11 +683,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/admin/XiangMu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="399" column="58" selection-start-line="399" selection-start-column="58" selection-end-line="399" selection-end-column="58" />
+        <state relative-caret-position="135">
+          <caret line="396" column="30" lean-forward="true" selection-start-line="396" selection-start-column="30" selection-end-line="396" selection-end-column="30" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/admin/Admin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="48" column="36" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/admin/ZhiFu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="30" column="27" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="27" />
         </state>
       </provider>
     </entry>

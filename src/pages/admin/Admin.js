@@ -10,6 +10,7 @@ import GongZuoJiLu from "./GongZuoJiLu";
 import * as Event from '../../util/Event';
 import XiangMu from "./XiangMu";
 import YongHu from "./YongHu";
+import ZhiFu from "./ZhiFu";
 
 const {
     Header, Content, Footer, Sider,
@@ -43,6 +44,10 @@ class Admin extends React.Component {
                             <Icon type="pie-chart"/>
                             <span>项目</span>
                         </NavLink>
+                        <NavLink exact activeClassName="active" to="/Admin/ZhiFu">
+                            <Icon type="pie-chart"/>
+                            <span>支付</span>
+                        </NavLink>
                         <Button type='dashed' ghost style={{marginTop: 'auto'}} onClick={() => {
                             PubSub.publish(Event.NEED_LOGIN)
                         }}>
@@ -57,6 +62,7 @@ class Admin extends React.Component {
                             <Route path="/Admin/YongHu" component={YongHu}/>
                             <Route path="/Admin/GongSi" component={GongSi}/>
                             <Route path="/Admin/XiangMu" component={XiangMu}/>
+                            <Route path="/Admin/ZhiFu" component={ZhiFu}/>
                         </div>
                     </Content>
                     <Footer>
