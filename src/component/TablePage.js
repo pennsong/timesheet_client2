@@ -18,6 +18,7 @@ class TablePage extends Component {
         page: null,
         data: [],
         newModalVisible: false,
+        editModalVisible: false,
     }
 
     componentDidMount() {
@@ -50,6 +51,19 @@ class TablePage extends Component {
     closeNewModal = (e) => {
         this.setState({
             newModalVisible: false,
+        });
+    }
+
+    openEditModal = (e) => {
+        e.preventDefault()
+        this.setState({
+            editModalVisible: true,
+        });
+    }
+
+    closeEditModal = (e) => {
+        this.setState({
+            editModalVisible: false,
         });
     }
 
@@ -171,7 +185,21 @@ class TablePage extends Component {
     }
 
     renderNewForm() {
-        return <PPForm formConfig={this.props.recordFormConfig} submit={this.saveNew}/>
+        if (this.props.recordNewFormConfig) {
+            return <PPForm formConfig={this.props.recordNewFormConfig} submit={this.saveNew}/>
+        } else 
+        {
+            return null;
+        }
+    }
+
+    renderEditForm() {
+        if (this.props.recordEditFormConfig) {
+            return <PPForm formConfig={this.props.recordEditFormConfig} submit={this.saveEdit}/>
+        } else
+        {
+            return null;
+        }
     }
 
     render() {
@@ -185,6 +213,16 @@ class TablePage extends Component {
                 >
                     <div>
                         {this.renderNewForm()}
+                    </div>
+                </Modal>
+                <Modal visible={this.state.editModalVisible}
+                       onCancel={this.closeNewModal}
+                       title={this.props.newText + this.props.title}
+                       footer={null}
+                       destroyOnClose={true}
+                >
+                    <div>
+                        {this.renderEditForm()}
                     </div>
                 </Modal>
                 {this.renderHeader()}

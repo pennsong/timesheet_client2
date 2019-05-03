@@ -13,7 +13,7 @@ const confirm = Modal.confirm;
 class GongSi extends Component {
     tablePage = null;
 
-    recordFormConfig = {
+    recordNewFormConfig = {
         fields: [
             {
                 key: "mingCheng",
@@ -42,7 +42,7 @@ class GongSi extends Component {
             key: 'action',
             render: (text, record, index) => (
                 <span>
-                <a href="javascript:;" onClick={() => this.tablePage.delete(record.id)}>Delete</a>
+                <a href="javascript:;" onClick={() => this.tablePage.delete(record.id)}>删除</a>
              </span>
             ),
         }],
@@ -59,7 +59,7 @@ class GongSi extends Component {
                     deleteUrl={'admin/deleteGongSi/'}
                     pageTitle={'公司'}
                     newText={'新建'}
-                    recordFormConfig={this.recordFormConfig}
+                    recordNewFormConfig={this.recordNewFormConfig}
                     tableConfig={this.tableConfig}
                 />
             </div>
