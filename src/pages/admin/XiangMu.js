@@ -441,7 +441,7 @@ class AddJiFeiBiaoZhunForm extends Component {
                     {getFieldDecorator('kaiShi', {
                         rules: [{required: true, message: '开始日期必填!'}],
                     })(
-                        <DatePicker showTime={{defaultValue: moment('00:00:00', 'HH:mm:ss')}}/>
+                        <DatePicker/>
                     )}
                 </Form.Item>
                 <Form.Item

@@ -50,3 +50,12 @@
 .active {
     color: red;
 }
+
+table {
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid lightgray;
+    padding: 10px;
+    text-align: left;
+}

@@ -45,8 +45,8 @@ class GongSi extends Component {
             key: 'xiangMuObjMingCheng',
         }, {
             title: '人员',
-            dataIndex: 'yongHuObjMongHuMing',
-            key: 'yongHuObjMongHuMing',
+            dataIndex: 'yongHuObjYongHuMing',
+            key: 'yongHuObjYongHuMing',
         }, {
             title: '开始',
             key: 'kaiShi',

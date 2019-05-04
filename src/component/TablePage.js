@@ -173,6 +173,7 @@ class TablePage extends Component {
         return (<Table columns={this.props.tableConfig.column}
                        rowKey="id"
                        dataSource={this.state.data}
+                       style={{background: '#fff'}}
                        pagination={{
                            onChange: this.paginationOnChange,
                            onShowSizeChange: this.paginationOnShowSizeChange,
