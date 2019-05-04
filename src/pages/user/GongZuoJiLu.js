@@ -7,11 +7,13 @@ import {
 import TablePage from "../../component/TablePage";
 import * as InputType from "../../util/InputType";
 import {ppFormatDate, ppFormatTime} from "../../util/Function";
+import * as PPAxios from "../../util/PPAxios";
+import * as GlobalValue from "../../util/GlobalValue";
 
 const {Option} = Select;
 const confirm = Modal.confirm;
 
-class GongSi extends Component {
+class GongZuoJiLu extends Component {
     tablePage = null;
 
     recordNewFormConfig = {
@@ -97,9 +99,9 @@ class GongSi extends Component {
                 <TablePage
                     ref={(ref) => this.tablePage = ref}
                     title='工作记录'
-                    searchDataUrl={'admin/queryGongZuoJiLu'}
-                    saveNewUrl={'admin/importYongHuGongZuoJiLu'}
-                    deleteUrl={'admin/deleteYongHuGongZuoJiLu/'}
+                    searchDataUrl={'queryGongZuoJiLu'}
+                    saveNewUrl={'importGongZuoJiLu'}
+                    deleteUrl={'deleteGongZuoJiLu/'}
                     pageTitle={'工作记录'}
                     newText={'导入'}
                     recordNewFormConfig={this.recordNewFormConfig}
@@ -111,4 +113,4 @@ class GongSi extends Component {
     }
 }
 
-export default GongSi
+export default GongZuoJiLu

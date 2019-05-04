@@ -165,7 +165,7 @@ class GongSiBaoGao extends Component {
         })
 
         return (
-            <table>
+            <table className={'report'}>
                 <thead>
                 <tr>
                     <td>日期</td>
@@ -208,7 +208,7 @@ class GongSiBaoGao extends Component {
         })
 
         return (
-            <table>
+            <table className={'report'}>
                 <thead>
                 <tr>
                     <td>日期</td>
@@ -254,17 +254,17 @@ class GongSiBaoGao extends Component {
 }
 
 class SearchForm extends Component {
-    submit = (setJieSuanRi) => {
+    submit = (setJiSuanRi) => {
         // e.preventDefault();
         this.props.form.validateFields((err, values) => {
             console.log(values)
             if (!err) {
                 const data = {
                     gongSiId: values.gongSiId,
-                    setJieSuanRi,
+                    setJiSuanRi,
                     // 因为有时区的问题, 只能用以下方式强制转换成固定的字符串明确所选的日期
-                    kaiShi: moment(values.dateRange[0]._d).format('YYYY-MM-DD'),
-                    jieShu: moment(values.dateRange[1]._d).format('YYYY-MM-DD'),
+                    kaiShi: moment(values.kaiShi._d).format('YYYY-MM-DD'),
+                    jieShu: moment(values.jieShu._d).format('YYYY-MM-DD'),
                 }
 
                 PPAxios.httpPost(`${GlobalValue.RootUrl}admin/generateBaoGao`, data)
@@ -299,18 +299,29 @@ class SearchForm extends Component {
                             </Select>)}
                         </Form.Item>
                     </Col>
-                    <Col span={6}>
+                    <Col span={4}>
                         <Form.Item
-                            label="日期范围"
+                            label="开始日期"
                         >
-                            {getFieldDecorator('dateRange', {
-                                rules: [{required: true, message: '日期范围必填!'}],
+                            {getFieldDecorator('kaiShi', {
+                                rules: [{required: true, message: '开始日期必填!'}],
                             })(
-                                <RangePicker/>
+                                <DatePicker/>
                             )}
                         </Form.Item>
                     </Col>
-                    <Col span={12} style={{display: 'flex', justifyContent: 'flex-end', paddingTop: '42px'}}>
+                    <Col span={4}>
+                        <Form.Item
+                            label="结束日期"
+                        >
+                            {getFieldDecorator('jieShu', {
+                                rules: [{required: true, message: '结束日期必填!'}],
+                            })(
+                                <DatePicker/>
+                            )}
+                        </Form.Item>
+                    </Col>
+                    <Col span={10} style={{display: 'flex', justifyContent: 'flex-end', paddingTop: '42px'}}>
                         <Button type="primary" style={{marginRight: '8px'}}
                                 onClick={() => this.submit(false)}>预览报告</Button>
                         <Button type="primary" onClick={() => this.submit(true)}>生成报告</Button>

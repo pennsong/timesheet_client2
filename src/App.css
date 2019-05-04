@@ -51,10 +51,11 @@
     color: red;
 }
 
-table {
+table.report {
     border-collapse: collapse;
 }
-th, td {
+
+table.report th, table.report td {
     border: 1px solid lightgray;
     padding: 10px;
     text-align: left;

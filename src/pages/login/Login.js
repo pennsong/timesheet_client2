@@ -29,7 +29,7 @@ class LoginForm extends React.Component {
                         if (values.username === 'Admin') {
                             this.props.history.push(`/Admin/GongZuoJiLu`);
                         } else {
-                            // todo
+                            this.props.history.push(`/User/GongZuoJiLu`);
                         }
                     })
                     .catch(() => {

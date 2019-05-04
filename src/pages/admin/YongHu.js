@@ -129,7 +129,6 @@ class YongHu extends Component {
         }
     }
 }
-
 class setMiMaForm extends Component {
     submit = (e) => {
         e.preventDefault();

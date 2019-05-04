@@ -29,30 +29,49 @@ class Admin extends React.Component {
                         padding: '16px',
                         justifyContent: 'flex-start'
                     }}>
-                        <NavLink exact activeClassName="active" to="/Admin/GongZuoJiLu">
-                            <Icon type="pie-chart"/>
-                            <span>工作记录</span>
-                        </NavLink>
-                        <NavLink exact activeClassName="active" to="/Admin/YongHu">
-                            <Icon type="pie-chart"/>
-                            <span>用户</span>
-                        </NavLink>
-                        <NavLink exact activeClassName="active" to="/Admin/GongSi">
-                            <Icon type="pie-chart"/>
-                            <span>公司</span>
-                        </NavLink>
-                        <NavLink exact activeClassName="active" to="/Admin/XiangMu">
-                            <Icon type="pie-chart"/>
-                            <span>项目</span>
-                        </NavLink>
-                        <NavLink exact activeClassName="active" to="/Admin/ZhiFu">
-                            <Icon type="pie-chart"/>
-                            <span>支付</span>
-                        </NavLink>
-                        <NavLink exact activeClassName="active" to="/Admin/GongSiBaoGao">
-                            <Icon type="pie-chart"/>
-                            <span>公司报告</span>
-                        </NavLink>
+                        <Menu
+                            defaultSelectedKeys={['1']}
+                            defaultOpenKeys={['sub1']}
+                            mode="inline"
+                            theme="dark"
+                        >
+                            <Menu.Item key="1">
+                                <NavLink exact activeClassName="active" to="/Admin/GongZuoJiLu">
+                                    <Icon type="file-text"/>
+                                    <span>工作记录</span>
+                                </NavLink>
+                            </Menu.Item>
+                            <Menu.Item key="2">
+                                <NavLink exact activeClassName="active" to="/Admin/YongHu">
+                                    <Icon type="user"/>
+                                    <span>用户</span>
+                                </NavLink>
+                            </Menu.Item>
+                            <Menu.Item key="3">
+                                <NavLink exact activeClassName="active" to="/Admin/GongSi">
+                                    <Icon type="bank"/>
+                                    <span>公司</span>
+                                </NavLink>
+                            </Menu.Item>
+                            <Menu.Item key="4">
+                                <NavLink exact activeClassName="active" to="/Admin/XiangMu">
+                                    <Icon type="project"/>
+                                    <span>项目</span>
+                                </NavLink>
+                            </Menu.Item>
+                            <Menu.Item key="5">
+                                <NavLink exact activeClassName="active" to="/Admin/ZhiFu">
+                                    <Icon type="money-collect"/>
+                                    <span>支付</span>
+                                </NavLink>
+                            </Menu.Item>
+                            <Menu.Item key="6">
+                                <NavLink exact activeClassName="active" to="/Admin/GongSiBaoGao">
+                                    <Icon type="table"/>
+                                    <span>公司报告</span>
+                                </NavLink>
+                            </Menu.Item>
+                        </Menu>
                         <Button type='dashed' ghost style={{marginTop: 'auto'}} onClick={() => {
                             PubSub.publish(Event.NEED_LOGIN)
                         }}>
@@ -60,7 +79,7 @@ class Admin extends React.Component {
                         </Button>
                     </div>
                 </Sider>
-                <Layout style={{ display: 'flex'}}>
+                <Layout style={{display: 'flex'}}>
                     <Content style={{flex: 1, display: 'flex', flexDirection: 'column'}}>
                         <div style={{padding: '16px', flex: 1, display: 'flex', flexDirection: 'column'}}>
                             <Route path="/Admin/GongZuoJiLu" component={GongZuoJiLu}/>
