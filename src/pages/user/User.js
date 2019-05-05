@@ -3,6 +3,7 @@ import {Link, NavLink, Route} from "react-router-dom";
 import {
     Layout, Menu, Breadcrumb, Icon, Button, message, Form, Input, Row, Col, Modal,
 } from 'antd';
+import moment from 'moment';
 
 import GongZuoJiLu from "./GongZuoJiLu";
 import * as PubSub from "pubsub-js";
@@ -61,7 +62,7 @@ class User extends React.Component {
                         <Route path="/User/GongZuoJiLu" component={GongZuoJiLu}/>
                     </Content>
                     <Footer style={{textAlign: 'center'}}>
-                        Timesheet ©2019 Created by UGEEZ
+                        Timesheet ©{moment().format('yyyy')} Created by {`${GlobalValue.COMPANY}`}
                     </Footer>
                 </Layout>
             </Layout>

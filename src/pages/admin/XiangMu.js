@@ -398,7 +398,7 @@ class AddJiFeiBiaoZhunForm extends Component {
                     xiangMuId: this.props.xiangMu.id,
                     yongHuId: values.yongHuId,
                     // 因为有时区的问题, 只能用以下方式强制转换成固定的字符串明确所选的日期
-                    kaiShi: moment(values.kaiShi._d).format('YYYY-MM-DD'),
+                    kaiShi: moment(values.kaiShi._d).format('yyyy-MM-dd'),
                     xiaoShiFeiYong: values.xiaoShiFeiYong,
                 }
 

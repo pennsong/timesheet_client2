@@ -4,6 +4,7 @@ import {
     Layout, Menu, Breadcrumb, Icon, Button,
 } from 'antd';
 import * as PubSub from "pubsub-js";
+import moment from 'moment';
 
 import GongSi from "./GongSi";
 import GongZuoJiLu from "./GongZuoJiLu";
@@ -12,6 +13,7 @@ import XiangMu from "./XiangMu";
 import YongHu from "./YongHu";
 import ZhiFu from "./ZhiFu";
 import GongSiBaoGao from "./GongSiBaoGao";
+import * as GlobalValue from "../../util/GlobalValue";
 
 const {
     Header, Content, Footer, Sider,
@@ -92,7 +94,7 @@ class Admin extends React.Component {
                     </Content>
                     <Footer>
                         <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                            Timesheet ©2019 Created by UGEEZ
+                            Timesheet ©{moment().format('yyyy')} Created by {`${GlobalValue.COMPANY}`}
                         </div>
                     </Footer>
                 </Layout>

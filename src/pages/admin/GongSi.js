@@ -97,7 +97,7 @@ class GongSi extends Component {
     renderEditModal() {
         return (
             <Modal visible={this.state.editModalVisible}
-                   onCancel={this.closeEditModal}
+                   onCancel={this.closeAndRefreshList}
                    title={'设置新结算日'}
                    footer={null}
                    destroyOnClose={true}
@@ -127,7 +127,7 @@ class setJieSuanRiForm extends Component {
                 const data = {
                     id: this.props.gongSi.id,
                     // 因为有时区的问题, 只能用以下方式强制转换成固定的字符串明确所选的日期
-                    jieSuanRi: moment(values.jieSuanRi._d).format('YYYY-MM-DD'),
+                    jieSuanRi: moment(values.jieSuanRi._d).format('yyyy-MM-dd'),
                 }
 
                 PPAxios.httpPost(`${GlobalValue.RootUrl}admin/setGongSiJieSuanRi`, data)
