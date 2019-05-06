@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="521b6883-c27d-493d-9a17-b2080d870bbc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/admin/Admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/admin/Admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/admin/GongSi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/admin/GongSi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/admin/GongSiBaoGao.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/admin/GongSiBaoGao.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/admin/XiangMu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/admin/XiangMu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/user/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/user/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/admin/GongZuoJiLu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/admin/GongZuoJiLu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/user/GongZuoJiLu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/user/GongZuoJiLu.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,11 +36,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/admin/GongZuoJiLu.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1035">
-              <caret line="77" column="32" selection-start-line="77" selection-start-column="32" selection-end-line="77" selection-end-column="32" />
+            <state relative-caret-position="532">
+              <caret line="87" column="23" selection-start-line="87" selection-start-column="23" selection-end-line="87" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/user/GongZuoJiLu.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="89" column="23" selection-start-line="89" selection-start-column="23" selection-end-line="89" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -52,7 +58,7 @@
         <entry file="file://$PROJECT_DIR$/src/util/Function.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="495">
-              <caret line="33" column="1" lean-forward="true" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
+              <caret line="33" column="1" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -81,14 +87,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/admin/GongSiBaoGao.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
+            <state relative-caret-position="3780">
               <caret line="265" selection-start-line="265" selection-end-line="265" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/util/GlobalValue.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="31" selection-start-column="31" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -156,20 +171,20 @@
         <option value="$PROJECT_DIR$/src/util/Event.js" />
         <option value="$PROJECT_DIR$/src/pages/admin/XiangMu_bak.js" />
         <option value="$PROJECT_DIR$/src/pages/admin/ZhiFu.js" />
-        <option value="$PROJECT_DIR$/src/pages/admin/GongZuoJiLu.js" />
         <option value="$PROJECT_DIR$/src/component/TablePage.js" />
         <option value="$PROJECT_DIR$/src/pages/admin/BaoGao.js" />
         <option value="$PROJECT_DIR$/src/util/Function.js" />
         <option value="$PROJECT_DIR$/src/pages/login/Login.js" />
         <option value="$PROJECT_DIR$/src/App.css" />
         <option value="$PROJECT_DIR$/src/pages/admin/YongHu.js" />
-        <option value="$PROJECT_DIR$/src/pages/user/GongZuoJiLu.js" />
         <option value="$PROJECT_DIR$/src/util/GlobalValue.js" />
         <option value="$PROJECT_DIR$/src/pages/admin/GongSiBaoGao.js" />
         <option value="$PROJECT_DIR$/src/pages/admin/XiangMu.js" />
         <option value="$PROJECT_DIR$/src/pages/admin/GongSi.js" />
         <option value="$PROJECT_DIR$/src/pages/user/User.js" />
         <option value="$PROJECT_DIR$/src/pages/admin/Admin.js" />
+        <option value="$PROJECT_DIR$/src/pages/user/GongZuoJiLu.js" />
+        <option value="$PROJECT_DIR$/src/pages/admin/GongZuoJiLu.js" />
       </list>
     </option>
   </component>
@@ -190,7 +205,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -202,12 +216,6 @@
               <item name="timesheet_client" type="b2602c69:ProjectViewProjectNode" />
               <item name="timesheet_client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="timesheet_client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="timesheet_client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="component" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="timesheet_client" type="b2602c69:ProjectViewProjectNode" />
@@ -227,25 +235,13 @@
               <item name="timesheet_client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="login" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="timesheet_client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="timesheet_client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="user" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="timesheet_client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="timesheet_client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -294,7 +290,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.Debug Application">
+  <component name="RunManager" selected="npm.npm start">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
@@ -347,7 +343,8 @@
       <workItem from="1556486145085" duration="21560000" />
       <workItem from="1556610678512" duration="314000" />
       <workItem from="1556613882175" duration="68844000" />
-      <workItem from="1557109305099" duration="2451000" />
+      <workItem from="1557109305099" duration="3093000" />
+      <workItem from="1557123185836" duration="895000" />
     </task>
     <task id="LOCAL-00001" summary="before 添加 编辑项目">
       <created>1556796553007</created>
@@ -391,17 +388,25 @@
       <option name="project" value="LOCAL" />
       <updated>1557050653779</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="after fix yyyy bug">
+      <created>1557116298632</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1557116298632</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93169000" />
+    <option name="totallyTimeSpent" value="94706000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="227" y="23" width="1693" height="1177" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7366197" visible="true" weight="0.20072772" />
-      <window_info id="Structure" order="1" sideWeight="0.2633803" side_tool="true" visible="true" weight="0.20072772" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7362356" visible="true" weight="0.20072772" />
+      <window_info id="Structure" order="1" sideWeight="0.2637644" side_tool="true" visible="true" weight="0.20072772" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
@@ -410,8 +415,8 @@
       <window_info id="npm" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.27118644" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2645951" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3314501" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2645951" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3314501" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -484,7 +489,8 @@
     <MESSAGE value="after 添加报告页面" />
     <MESSAGE value="after 调整了导航菜单显示" />
     <MESSAGE value="before moda加入提成相关功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="before moda加入提成相关功能" />
+    <MESSAGE value="after fix yyyy bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="after fix yyyy bug" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -675,13 +681,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/util/GlobalValue.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="31" selection-start-column="31" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/admin/Admin.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -696,13 +695,6 @@
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/user/GongZuoJiLu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="85" column="38" lean-forward="true" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -723,10 +715,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/admin/GongZuoJiLu.js">
+    <entry file="file://$PROJECT_DIR$/src/util/Function.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1035">
-          <caret line="77" column="32" selection-start-line="77" selection-start-column="32" selection-end-line="77" selection-end-column="32" />
+        <state relative-caret-position="495">
+          <caret line="33" column="1" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -750,20 +742,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/util/Function.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="1" lean-forward="true" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/admin/GongSiBaoGao.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
+        <state relative-caret-position="3780">
           <caret line="265" selection-start-line="265" selection-end-line="265" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/GlobalValue.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="31" selection-start-column="31" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/user/GongZuoJiLu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="89" column="23" selection-start-line="89" selection-start-column="23" selection-end-line="89" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/admin/GongZuoJiLu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="87" column="23" selection-start-line="87" selection-start-column="23" selection-end-line="87" selection-end-column="23" />
         </state>
       </provider>
     </entry>

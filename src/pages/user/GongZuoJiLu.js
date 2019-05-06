@@ -80,13 +80,14 @@ class GongZuoJiLu extends Component {
             const date = ppFormatDate(fields[2]);
             const kaiShi = ppFormatTime(fields[3]);
             const jieShu = ppFormatTime(fields[4]);
+            const beiZhu = item.substr(item.lastIndexOf(jieShu) + jieShu.length).trim();
 
             return {
                 xiangMuMingCheng: fields[0],
                 yongHuMing: fields[1],
                 kaiShi: date + "T" + kaiShi,
                 jieShu: date + "T" + jieShu,
-                beiZhu: fields[5],
+                beiZhu,
             }
         })
 
