@@ -94,7 +94,7 @@ class Admin extends React.Component {
                     </Content>
                     <Footer>
                         <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                            Timesheet ©{moment().format('yyyy')} Created by {`${GlobalValue.COMPANY}`}
+                            Timesheet ©{moment().format('YYYY')} Created by {`${GlobalValue.COMPANY}`}
                         </div>
                     </Footer>
                 </Layout>

@@ -227,7 +227,7 @@ class GongSiBaoGao extends Component {
                         (item, index) => {
                             return (
                                 <tr key={index}>
-                                    <td>{moment(item.开始).format("yyyy-MM-dd")}</td>
+                                    <td>{moment(item.开始).format("YYYY-MM-DD")}</td>
                                     <td>{moment(item.开始).format("HH:mm")}</td>
                                     <td>{moment(item.结束).format("HH:mm")}</td>
                                     <td>{item.项目}</td>
@@ -263,8 +263,8 @@ class SearchForm extends Component {
                     gongSiId: values.gongSiId,
                     setJiSuanRi,
                     // 因为有时区的问题, 只能用以下方式强制转换成固定的字符串明确所选的日期
-                    kaiShi: moment(values.kaiShi._d).format('yyyy-MM-dd'),
-                    jieShu: moment(values.jieShu._d).format('yyyy-MM-dd'),
+                    kaiShi: moment(values.kaiShi._d).format('YYYY-MM-DD'),
+                    jieShu: moment(values.jieShu._d).format('YYYY-MM-DD'),
                 }
 
                 PPAxios.httpPost(`${GlobalValue.RootUrl}admin/generateBaoGao`, data)

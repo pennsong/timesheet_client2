@@ -62,7 +62,7 @@ class User extends React.Component {
                         <Route path="/User/GongZuoJiLu" component={GongZuoJiLu}/>
                     </Content>
                     <Footer style={{textAlign: 'center'}}>
-                        Timesheet ©{moment().format('yyyy')} Created by {`${GlobalValue.COMPANY}`}
+                        Timesheet ©{moment().format('YYYY')} Created by {`${GlobalValue.COMPANY}`}
                     </Footer>
                 </Layout>
             </Layout>

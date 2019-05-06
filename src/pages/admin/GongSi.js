@@ -127,7 +127,7 @@ class setJieSuanRiForm extends Component {
                 const data = {
                     id: this.props.gongSi.id,
                     // 因为有时区的问题, 只能用以下方式强制转换成固定的字符串明确所选的日期
-                    jieSuanRi: moment(values.jieSuanRi._d).format('yyyy-MM-dd'),
+                    jieSuanRi: moment(values.jieSuanRi._d).format('YYYY-MM-DD'),
                 }
 
                 PPAxios.httpPost(`${GlobalValue.RootUrl}admin/setGongSiJieSuanRi`, data)
