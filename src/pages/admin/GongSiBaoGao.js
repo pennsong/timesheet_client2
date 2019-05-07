@@ -170,9 +170,9 @@ class GongSiBaoGao extends Component {
             <table className={'report'}>
                 <thead>
                 <tr>
-                    <td>日期</td>
-                    <td>金额</td>
-                    <td>备注</td>
+                    <td><div>日期</div></td>
+                    <td><div>金额</div></td>
+                    <td><div>备注</div></td>
                 </tr>
                 </thead>
                 <tbody>
@@ -181,9 +181,9 @@ class GongSiBaoGao extends Component {
                         (item, index) => {
                             return (
                                 <tr key={index}>
-                                    <td>{item.日期}</td>
-                                    <td>{item.金额}</td>
-                                    <td>{item.备注}</td>
+                                    <td class="date"><div>{item.日期}</div></td>
+                                    <td><div>{item.金额}</div></td>
+                                    <td class="comment"><div>{item.备注}</div></td>
                                 </tr>
                             )
                         }
@@ -192,8 +192,8 @@ class GongSiBaoGao extends Component {
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td>合计</td>
-                        <td>{toDecimal2(total)}</td>
+                        <td><div>合计</div></td>
+                        <td><div>{toDecimal2(total)}</div></td>
                         <td></td>
                     </tr>
                 </tfoot>
@@ -213,14 +213,15 @@ class GongSiBaoGao extends Component {
             <table className={'report'}>
                 <thead>
                 <tr>
-                    <td>日期</td>
-                    <td>开始</td>
-                    <td>结束</td>
-                    <td>项目</td>
-                    <td>人员</td>
-                    <td>耗时</td>
-                    <td>小时费用</td>
-                    <td>费用</td>
+                    <td><div>日期</div></td>
+                    <td><div>开始</div></td>
+                    <td><div>结束</div></td>
+                    <td><div>项目</div></td>
+                    <td><div>人员</div></td>
+                    <td><div>耗时</div></td>
+                    <td><div>小时费用</div></td>
+                    <td><div>费用</div></td>
+                    <td><div>备注</div></td>
                 </tr>
                 </thead>
                 <tbody>
@@ -229,14 +230,15 @@ class GongSiBaoGao extends Component {
                         (item, index) => {
                             return (
                                 <tr key={index}>
-                                    <td>{moment(item.开始).format("YYYY-MM-DD")}</td>
-                                    <td>{moment(item.开始).format("HH:mm")}</td>
-                                    <td>{moment(item.结束).format("HH:mm")}</td>
-                                    <td>{item.项目}</td>
-                                    <td>{item.人员}</td>
-                                    <td>{toDecimal2(item.耗时)}</td>
-                                    <td>{item.小时费用}</td>
-                                    <td>{toDecimal2(item.费用)}</td>
+                                    <td class="date"><div>{moment(item.开始).format("YYYY-MM-DD")}</div></td>
+                                    <td><div>{moment(item.开始).format("HH:mm")}</div></td>
+                                    <td><div>{moment(item.结束).format("HH:mm")}</div></td>
+                                    <td><div>{item.项目}</div></td>
+                                    <td><div>{item.人员}</div></td>
+                                    <td><div>{toDecimal2(item.耗时)}</div></td>
+                                    <td><div>{item.小时费用}</div></td>
+                                    <td><div>{toDecimal2(item.费用)}</div></td>
+                                    <td class="comment"><div>{item.备注}</div></td>
                                 </tr>
                             )
                         }
@@ -245,8 +247,8 @@ class GongSiBaoGao extends Component {
                 </tbody>
                 <tfoot>
                 <tr>
-                    <td colSpan={7}>合计</td>
-                    <td>{toDecimal2(total)}</td>
+                    <td colSpan={7}><div>合计</div></td>
+                    <td colSpan={2}><div>{toDecimal2(total)}</div></td>
                 </tr>
                 </tfoot>
             </table>
@@ -280,11 +282,11 @@ class SearchForm extends Component {
     exportToPDF = () => {
         let report = window.document.getElementById('report');
         let opt = {
-            margin:       1,
+            margin:       0.2,
             filename:     '工时费用清单.pdf',
             image:        { type: 'jpeg', quality: 1 },
             html2canvas:  { scale: 2 },
-            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            jsPDF:        { unit: 'in', format: 'letter', orientation: 'landscape' }
         };
         html2pdf(report, opt);
     }

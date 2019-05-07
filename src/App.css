@@ -57,11 +57,31 @@ table.report {
 
 table.report th, table.report td {
     border: 1px solid lightgray;
-    padding: 0 10px;
     text-align: left;
+}
+
+table.report th {
+    padding: 0 10px;
+}
+
+table.report td div {
+    display: flex;
+    padding: 0 10px;
+    align-items: center;
 }
 
 table.report td {
     height: 34px;
-    vertical-align: middle;
+    /* vertical-align: middle;
+    overflow: hidden; */
+    /* white-space: nowrap; */
+    /* text-overflow: ellipsis; */
+}
+
+table.report td.date {
+    min-width: 124px;
+}
+
+table.report td.comment {
+    max-width: 420px;
 }
