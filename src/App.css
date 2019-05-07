@@ -57,6 +57,11 @@ table.report {
 
 table.report th, table.report td {
     border: 1px solid lightgray;
-    padding: 10px;
+    padding: 0 10px;
     text-align: left;
+}
+
+table.report td {
+    height: 34px;
+    vertical-align: middle;
 }
