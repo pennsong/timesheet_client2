@@ -5,6 +5,8 @@ import {
 } from 'antd';
 import moment from 'moment';
 
+import html2pdf from 'html2pdf.js';
+
 import TablePage from "../../component/TablePage";
 import * as InputType from "../../util/InputType";
 import * as PubSub from "pubsub-js";
@@ -78,7 +80,7 @@ class GongSiBaoGao extends Component {
     render() {
         return (
             <div>
-                <WrappedSearchForm gongSiOptions={this.state.gongSiOptions} setReportData={this.setReportData}/>
+                <WrappedSearchForm showExport={!!this.state.reportData} gongSiOptions={this.state.gongSiOptions} setReportData={this.setReportData}/>
                 {this.renderReport()}
             </div>
         )
@@ -87,7 +89,7 @@ class GongSiBaoGao extends Component {
     renderReport() {
         if (this.state.reportData) {
             return (
-                <div style={{background: '#fff', padding: '16px'}}>
+                <div id="report" style={{background: '#fff', padding: '16px'}}>
                     {this.renderSection("开始")}
                     {this.renderSection("结束")}
                     {this.renderSection("期初Balance")}
@@ -254,10 +256,10 @@ class GongSiBaoGao extends Component {
 }
 
 class SearchForm extends Component {
+
     submit = (setJiSuanRi) => {
         // e.preventDefault();
         this.props.form.validateFields((err, values) => {
-            console.log(values)
             if (!err) {
                 const data = {
                     gongSiId: values.gongSiId,
@@ -269,11 +271,22 @@ class SearchForm extends Component {
 
                 PPAxios.httpPost(`${GlobalValue.RootUrl}admin/generateBaoGao`, data)
                     .then((response) => {
-                        console.log(response)
                         this.props.setReportData(response.data.data);
-                    })
+                    });
             }
         });
+    }
+
+    exportToPDF = () => {
+        let report = window.document.getElementById('report');
+        let opt = {
+            margin:       1,
+            filename:     '工时费用清单.pdf',
+            image:        { type: 'jpeg', quality: 1 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+        html2pdf(report, opt);
     }
 
     renderOptions = () => {
@@ -283,7 +296,8 @@ class SearchForm extends Component {
     }
 
     render = () => {
-        const {getFieldDecorator} = this.props.form;
+        const {form,showExport} = this.props;
+        const {getFieldDecorator} = form;
 
         return (
             <Form>
@@ -322,6 +336,11 @@ class SearchForm extends Component {
                         </Form.Item>
                     </Col>
                     <Col span={10} style={{display: 'flex', justifyContent: 'flex-end', paddingTop: '42px'}}>
+                        {
+                            showExport && 
+                            <Button type="primary" style={{marginRight: '8px'}}
+                                onClick={() => this.exportToPDF()}>导出PDF</Button>
+                        }
                         <Button type="primary" style={{marginRight: '8px'}}
                                 onClick={() => this.submit(false)}>预览报告</Button>
                         <Button type="primary" onClick={() => this.submit(true)}>生成报告</Button>
