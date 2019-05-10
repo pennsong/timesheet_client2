@@ -13,6 +13,8 @@ import XiangMu from "./XiangMu";
 import YongHu from "./YongHu";
 import ZhiFu from "./ZhiFu";
 import GongSiBaoGao from "./GongSiBaoGao";
+import TiCheng from "./TiCheng";
+import YongHuBaoGao from "./YongHuBaoGao"
 import * as GlobalValue from "../../util/GlobalValue";
 
 const {
@@ -73,6 +75,18 @@ class Admin extends React.Component {
                                     <span>公司报告</span>
                                 </NavLink>
                             </Menu.Item>
+                            <Menu.Item key="7">
+                                <NavLink exact activeClassName="active" to="/Admin/TiCheng">
+                                    <Icon type="money-collect"/>
+                                    <span>提成</span>
+                                </NavLink>
+                            </Menu.Item>
+                            <Menu.Item key="8">
+                                <NavLink exact activeClassName="active" to="/Admin/YongHuBaoGao">
+                                    <Icon type="table"/>
+                                    <span>用户报告</span>
+                                </NavLink>
+                            </Menu.Item>
                         </Menu>
                         <Button type='dashed' ghost style={{marginTop: 'auto'}} onClick={() => {
                             PubSub.publish(Event.NEED_LOGIN)
@@ -90,6 +104,8 @@ class Admin extends React.Component {
                             <Route path="/Admin/XiangMu" component={XiangMu}/>
                             <Route path="/Admin/ZhiFu" component={ZhiFu}/>
                             <Route path="/Admin/GongSiBaoGao" component={GongSiBaoGao}/>
+                            <Route path="/Admin/TiCheng" component={TiCheng} />
+                            <Route path="/Admin/YongHuBaoGao" component={YongHuBaoGao} />
                         </div>
                     </Content>
                     <Footer>

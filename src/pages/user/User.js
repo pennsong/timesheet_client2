@@ -6,6 +6,7 @@ import {
 import moment from 'moment';
 
 import GongZuoJiLu from "./GongZuoJiLu";
+import YongHuBaoGao from "./YongHuBaoGao";
 import * as PubSub from "pubsub-js";
 import * as Event from "../../util/Event";
 import * as PPAxios from "../../util/PPAxios";
@@ -44,6 +45,12 @@ class User extends React.Component {
                                     <span>工作记录</span>
                                 </NavLink>
                             </Menu.Item>
+                            <Menu.Item key="2">
+                                <NavLink exact activeClassName="active" to="/User/YongHuBaoGao">
+                                    <Icon type="table"/>
+                                    <span>用户报告</span>
+                                </NavLink>
+                            </Menu.Item>
                         </Menu>
                         <Button type='dashed' ghost style={{marginTop: 'auto'}} onClick={() => {
                             this.openEditwModal();
@@ -60,6 +67,7 @@ class User extends React.Component {
                 <Layout>
                     <Content style={{margin: '16px 16px'}}>
                         <Route path="/User/GongZuoJiLu" component={GongZuoJiLu}/>
+                        <Route path="/User/YongHuBaoGao" component={YongHuBaoGao} />
                     </Content>
                     <Footer style={{textAlign: 'center'}}>
                         Timesheet ©{moment().format('YYYY')} Created by {`${GlobalValue.COMPANY}`}

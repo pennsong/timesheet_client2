@@ -19,61 +19,33 @@ const {Option} = Select;
 const confirm = Modal.confirm;
 const {RangePicker} = DatePicker;
 
-class GongSiBaoGao extends Component {
+class YongHuBaoGao extends Component {
     state = {
-        gongSiOptions: [],
+        yongHuOptions: [],
         reportData: null,
     }
 
     tableConfig = {
-        column: [{
-            title: 'id',
-            dataIndex: 'id',
-            key: 'id',
-        }, {
-            title: '公司名称',
-            dataIndex: 'gongSiObjMingCheng',
-            key: 'gongSiObjMingCheng',
-        }, {
-            title: '日期',
-            dataIndex: 'riQi',
-            key: 'riQi',
-        }, {
-            title: '金额',
-            dataIndex: 'jinE',
-            key: 'jinE',
-        }, {
-            title: '备注',
-            dataIndex: 'beiZhu',
-            key: 'beiZhu',
-        }, {
-            title: 'Action',
-            key: 'action',
-            render: (text, record, index) => (
-                <span>
-                <a href="javascript:;" onClick={() => this.tablePage.delete(record.id)}>删除</a>
-             </span>
-            ),
-        }],
     }
 
     componentDidMount = () => {
-        this.setGongSiList();
+        this.setYongHuList();
     }
 
-    setGongSiList = () => {
-        // 取得公司列表
-        PPAxios.httpPost(`${GlobalValue.RootUrl}admin/queryGongSi`, {})
+    setYongHuList = () => {
+        // 取得用户列表，非Admin    
+        PPAxios.httpPost(`${GlobalValue.RootUrl}admin/queryYongHu`, {})
             .then((response) => {
                 const list = response.data.data;
                 this.setState({
-                    gongSiOptions: list.map(item => ({
+                    yongHuOptions: list.filter(item => item.yongHuMing != 'Admin').map(item => ({
                         value: item.id,
-                        text: item.mingCheng + ":" + item.jieSuanRi,
+                        text: item.yongHuMing + ":" + item.jieSuanRi
                     }))
-                });
+                })
             })
     }
+
     setReportData = (reportData) => {
         this.setState({
             reportData,
@@ -83,7 +55,7 @@ class GongSiBaoGao extends Component {
     render() {
         return (
             <div>
-                <WrappedSearchForm showExport={!!this.state.reportData} gongSiOptions={this.state.gongSiOptions} setReportData={this.setReportData} setGongSiList={this.setGongSiList} />
+                <WrappedSearchForm showExport={!!this.state.reportData} yongHuOptions={this.state.yongHuOptions} setReportData={this.setReportData} setYongHuList={this.setYongHuList} />
                 {this.renderReport()}
             </div>
         )
@@ -97,12 +69,8 @@ class GongSiBaoGao extends Component {
                     {this.renderSection("结束")}
                     {this.renderSection("期初Balance")}
                     {this.renderSection("期末Balance")}
-                    {this.renderSection("充值记录")}
-                    {this.renderSection("消费记录")}
-                    {/*<div>充值记录:</div>*/}
-                    {/*{this.renderZhiFus(this.state.reportData.充值记录)}*/}
-                    {/*<div>消费记录:</div>*/}
-                    {/*{this.renderGongZuoJiLus(this.state.reportData.消费记录)}*/}
+                    {this.renderSection("提成记录")}
+                    {this.renderSection("工作记录")}
                 </div>
             )
         } else {
@@ -152,20 +120,20 @@ class GongSiBaoGao extends Component {
     }
 
     renderArrayBody(sectionName) {
-        if (sectionName == "充值记录") {
-            return this.renderChongZhiJiLu()
+        if (sectionName == "提成记录") {
+            return this.renderTiChengJiLu()
         }
 
-        if (sectionName == "消费记录") {
-            return this.renderXiaoFeiJiLu()
+        if (sectionName == "工作记录") {
+            return this.renderGongZuoJiLu()
         }
 
         return null;
     }
 
-    renderChongZhiJiLu() {
+    renderTiChengJiLu() {
         let total = 0;
-        this.state.reportData.充值记录.forEach(item => {
+        this.state.reportData.提成记录.forEach(item => {
             total += item.金额
         })
 
@@ -180,7 +148,7 @@ class GongSiBaoGao extends Component {
                 </thead>
                 <tbody>
                 {
-                    this.state.reportData.充值记录.map(
+                    this.state.reportData.提成记录.map(
                         (item, index) => {
                             return (
                                 <tr key={index}>
@@ -205,11 +173,11 @@ class GongSiBaoGao extends Component {
         )
     }
 
-    renderXiaoFeiJiLu() {
+    renderGongZuoJiLu() {
         let total = 0;
 
-        this.state.reportData.消费记录.forEach(item =>{
-            total += item.费用;
+        this.state.reportData.工作记录.forEach(item =>{
+            total += item.收入;
         })
 
         return (
@@ -222,14 +190,14 @@ class GongSiBaoGao extends Component {
                     <td><div>项目</div></td>
                     <td><div>人员</div></td>
                     <td><div>耗时</div></td>
-                    <td><div>小时费用</div></td>
-                    <td><div>费用</div></td>
+                    <td><div>小时提成</div></td>
+                    <td><div>收入</div></td>
                     <td><div>备注</div></td>
                 </tr>
                 </thead>
                 <tbody>
                 {
-                    this.state.reportData.消费记录.map(
+                    this.state.reportData.工作记录.map(
                         (item, index) => {
                             return (
                                 <tr key={index}>
@@ -239,8 +207,8 @@ class GongSiBaoGao extends Component {
                                     <td><div>{item.项目}</div></td>
                                     <td><div>{item.人员}</div></td>
                                     <td><div>{toDecimal2(item.耗时)}</div></td>
-                                    <td><div>{item.小时费用}</div></td>
-                                    <td><div>{toDecimal2(item.费用)}</div></td>
+                                    <td><div>{item.小时提成}</div></td>
+                                    <td><div>{toDecimal2(item.收入)}</div></td>
                                     <td className="comment"><div>{item.备注}</div></td>
                                 </tr>
                             )
@@ -267,18 +235,19 @@ class SearchForm extends Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 const data = {
-                    gongSiId: values.gongSiId,
+                    yongHuId: values.yongHuId,
                     setJieSuanRi,
                     // 因为有时区的问题, 只能用以下方式强制转换成固定的字符串明确所选的日期
                     kaiShi: moment(values.kaiShi._d).format('YYYY-MM-DD'),
                     jieShu: moment(values.jieShu._d).format('YYYY-MM-DD'),
                 }
 
-                PPAxios.httpPost(`${GlobalValue.RootUrl}admin/generateBaoGao`, data)
+                PPAxios.httpPost(`${GlobalValue.RootUrl}admin/generateYongHuBaoGao`, data)
                     .then((response) => {
                         this.props.setReportData(response.data.data);
-                        if(setJieSuanRi)
-                            this.props.setGongSiList();
+                        if(setJieSuanRi) {
+                            this.props.setYongHuList();
+                        }
                     });
             }
         });
@@ -288,7 +257,7 @@ class SearchForm extends Component {
         let report = window.document.getElementById('report');
         let opt = {
             margin:       0.2,
-            filename:     '工时费用清单.pdf',
+            filename:     '用户收支清单.pdf',
             image:        { type: 'jpeg', quality: 1 },
             html2canvas:  { scale: 2 },
             jsPDF:        { unit: 'in', format: 'letter', orientation: 'landscape' }
@@ -297,7 +266,7 @@ class SearchForm extends Component {
     }
 
     renderOptions = () => {
-        return this.props.gongSiOptions.map(item => (
+        return this.props.yongHuOptions.map(item => (
             <Option value={item.value} key={item.value}>{item.text}</Option>
         ))
     }
@@ -311,10 +280,10 @@ class SearchForm extends Component {
                 <Row gutter={16}>
                     <Col span={6}>
                         <Form.Item
-                            label="公司"
+                            label="用户名称"
                         >
-                            {getFieldDecorator('gongSiId', {
-                                rules: [{required: true, message: '公司必填!'}],
+                            {getFieldDecorator('yongHuId', {
+                                rules: [{required: true, message: '用户必填!'}],
                             })(<Select>
                                 {this.renderOptions()}
                             </Select>)}
@@ -360,4 +329,4 @@ class SearchForm extends Component {
 
 const WrappedSearchForm = Form.create()(SearchForm);
 
-export default GongSiBaoGao
+export default YongHuBaoGao
