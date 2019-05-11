@@ -29,7 +29,13 @@ class YongHuBaoGao extends Component {
     }
 
     componentDidMount = () => {
+        PubSub.subscribe(Event.REFRESH_YONGHU_JIESUANRI, () => {
+            this.setYongHuList();
+        });
         this.setYongHuList();
+    }
+    componentWillUnmount = () =>  {
+        PubSub.unsubscribe(Event.REFRESH_YONGHU_JIESUANRI);
     }
 
     setYongHuList = () => {
@@ -246,7 +252,7 @@ class SearchForm extends Component {
                     .then((response) => {
                         this.props.setReportData(response.data.data);
                         if(setJieSuanRi) {
-                            this.props.setYongHuList();
+                            PubSub.publish(Event.REFRESH_YONGHU_JIESUANRI);
                         }
                     });
             }

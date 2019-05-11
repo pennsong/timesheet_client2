@@ -58,7 +58,13 @@ class GongSiBaoGao extends Component {
     }
 
     componentDidMount = () => {
+        PubSub.subscribe(Event.REFRESH_GONGSI_JIESUANRI, () => {
+            this.setGongSiList();
+        });
         this.setGongSiList();
+    }
+    componentWillUnmount = () =>  {
+        PubSub.unsubscribe(Event.REFRESH_GONGSI_JIESUANRI);
     }
 
     setGongSiList = () => {
@@ -277,8 +283,9 @@ class SearchForm extends Component {
                 PPAxios.httpPost(`${GlobalValue.RootUrl}admin/generateBaoGao`, data)
                     .then((response) => {
                         this.props.setReportData(response.data.data);
-                        if(setJieSuanRi)
-                            this.props.setGongSiList();
+                        if(setJieSuanRi){
+                            PubSub.publish(Event.REFRESH_GONGSI_JIESUANRI);
+                        }
                     });
             }
         });
