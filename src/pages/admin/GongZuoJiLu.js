@@ -11,7 +11,7 @@ import {ppFormatDate, ppFormatTime} from "../../util/Function";
 const {Option} = Select;
 const confirm = Modal.confirm;
 
-class GongSi extends Component {
+class GongZuoJiLu extends Component {
     tablePage = null;
 
     recordNewFormConfig = {
@@ -73,6 +73,7 @@ class GongSi extends Component {
     processNewData = (values) => {
         const text = values.importData;
         const dataArray = text.split("\n").filter(item => item.trim().length > 0);
+        console.log(dataArray)
         const data = dataArray.map(item => {
             const fields = item.split(/\s+/);
             const date = ppFormatDate(fields[2]);
@@ -112,4 +113,4 @@ class GongSi extends Component {
     }
 }
 
-export default GongSi
+export default GongZuoJiLu

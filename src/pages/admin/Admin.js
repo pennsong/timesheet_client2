@@ -13,6 +13,8 @@ import XiangMu from "./XiangMu";
 import YongHu from "./YongHu";
 import ZhiFu from "./ZhiFu";
 import GongSiBaoGao from "./GongSiBaoGao";
+import TiCheng from "./TiCheng";
+import YongHuBaoGao from "./YongHuBaoGao"
 import * as GlobalValue from "../../util/GlobalValue";
 
 const {
@@ -20,6 +22,37 @@ const {
 } = Layout;
 
 class Admin extends React.Component {
+    state = {
+        defaultMenuItemKey: '1'
+    }
+    componentWillMount() {
+        let path = this.props.location.pathname.toLowerCase();
+        let end = path.length;
+        // 要求：path不能为 /Admin/xxxx 以外的格式
+        for(let i = 7; i < path.length; i++) {
+            if(path[i] == '/' || path[i] == '?' || path[i] == '#' || path[i] == '&') {
+                end = i;
+                break;
+            }
+        }
+        path = path.substring(0, end);
+        let path2key = {
+            '/admin/gongzuojilu': '1',
+            '/admin/yonghu': '2',
+            '/admin/gongsi': '3',
+            '/admin/xiangmu': '4',
+            '/admin/zhifu': '5',
+            '/admin/gongsibaogao': '6',
+            '/admin/ticheng': '7',
+            '/admin/yonghubaogao': '8',
+        }
+        this.setDefaultMenuItem(path2key[path] || '1');
+    }
+    setDefaultMenuItem(activeMenuItemKey) {
+        this.setState({
+            defaultMenuItemKey: activeMenuItemKey
+        })
+    }
     render() {
         return (
             <Layout>
@@ -32,7 +65,7 @@ class Admin extends React.Component {
                         justifyContent: 'flex-start'
                     }}>
                         <Menu
-                            defaultSelectedKeys={['1']}
+                            defaultSelectedKeys={[this.state.defaultMenuItemKey]}
                             defaultOpenKeys={['sub1']}
                             mode="inline"
                             theme="dark"
@@ -73,6 +106,18 @@ class Admin extends React.Component {
                                     <span>公司报告</span>
                                 </NavLink>
                             </Menu.Item>
+                            <Menu.Item key="7">
+                                <NavLink exact activeClassName="active" to="/Admin/TiCheng">
+                                    <Icon type="money-collect"/>
+                                    <span>提成</span>
+                                </NavLink>
+                            </Menu.Item>
+                            <Menu.Item key="8">
+                                <NavLink exact activeClassName="active" to="/Admin/YongHuBaoGao">
+                                    <Icon type="table"/>
+                                    <span>用户报告</span>
+                                </NavLink>
+                            </Menu.Item>
                         </Menu>
                         <Button type='dashed' ghost style={{marginTop: 'auto'}} onClick={() => {
                             PubSub.publish(Event.NEED_LOGIN)
@@ -90,6 +135,8 @@ class Admin extends React.Component {
                             <Route path="/Admin/XiangMu" component={XiangMu}/>
                             <Route path="/Admin/ZhiFu" component={ZhiFu}/>
                             <Route path="/Admin/GongSiBaoGao" component={GongSiBaoGao}/>
+                            <Route path="/Admin/TiCheng" component={TiCheng} />
+                            <Route path="/Admin/YongHuBaoGao" component={YongHuBaoGao} />
                         </div>
                     </Content>
                     <Footer>

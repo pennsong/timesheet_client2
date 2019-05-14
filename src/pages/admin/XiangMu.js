@@ -139,6 +139,8 @@ class XiangMu extends Component {
                     {this.renderChengYuanList()}
                     {this.renderAddJiFeiBiaoZhunForm()}
                     {this.renderJiFeiBiaoZhunList()}
+                    {this.renderAddTiChengBiaoZhunForm()}
+                    {this.renderTiChengBiaoZhunList()}
                 </div>
             )
         } else {
@@ -168,7 +170,7 @@ class XiangMu extends Component {
     renderChengYuanList = () => {
         // render成员列表
         const options = this.state.yongHus.map(item => (
-            <Option value={item.id} key={item.id}>{item.yongHuMing + ":" + item.xiaoShiFeiYong}</Option>
+            <Option value={item.id} key={item.id}>{item.yongHuMing + ":" + item.xiaoShiFeiYong + "/" + item.xiaoShiTiCheng}</Option>
         ))
 
         // render项目成员标签
@@ -245,6 +247,46 @@ class XiangMu extends Component {
         PPAxios.httpPost(`${GlobalValue.RootUrl}admin/removeXiangMuJiFeiBiaoZhun`, data)
             .then(() => {
                 message.success("计费标准移除成功.", 5)
+                PubSub.publish(Event.REFRESH_EDITING_XIANGMU)
+            })
+    }
+
+    renderAddTiChengBiaoZhunForm = () => {
+        // 从用户列表中取出在目前项目中的用户
+        const options = this.state.yongHus.filter(item => {
+            return (this.state.xiangMu.tiChengBiaoZhunRDtos.some(tiChengBiaoZhunRDto => (
+                tiChengBiaoZhunRDto.yongHuObjId == item.id)
+            ))
+        });
+
+        return (
+            <WrappedAddTiChengBiaoZhunForm xiangMu={this.state.xiangMu} options={options}/>
+        )
+    }
+
+    renderTiChengBiaoZhunList = () => {
+        return this.state.xiangMu.tiChengBiaoZhunRDtos.map(item => {
+            return (
+                <div key={item.yongHuObjId + '_' + item.kaiShi}>
+                    <Tag closable onClose={(e) => {
+                        e.preventDefault()
+                        this.removeTiChengBiaoZhun(this.state.xiangMu.id, item.yongHuObjId, item.kaiShi)
+                    }}>{`${item.yongHuObjYongHuMing} ${item.kaiShi} ${item.xiaoShiTiCheng}`}</Tag>
+                </div>
+
+            )
+        })
+    }
+
+    removeTiChengBiaoZhun(xiangMuId, yongHuId, kaiShi) {
+        const data = {
+            xiangMuId,
+            yongHuId,
+            kaiShi,
+        }
+        PPAxios.httpPost(`${GlobalValue.RootUrl}admin/removeXiangMuTiChengBiaoZhun`, data)
+            .then(() => {
+                message.success("提成标准移除成功.", 5)
                 PubSub.publish(Event.REFRESH_EDITING_XIANGMU)
             })
     }
@@ -360,7 +402,7 @@ class AddChengYuanForm extends Component {
 
     renderOptions = () => {
         return this.props.options.map(item => (
-            <Option value={item.id} key={item.id}>{item.yongHuMing + ":" + item.xiaoShiFeiYong}</Option>
+            <Option value={item.id} key={item.id}>{item.yongHuMing + ":" + item.xiaoShiFeiYong + "/" + item.xiaoShiTiCheng}</Option>
         ))
     }
 
@@ -467,5 +509,85 @@ class AddJiFeiBiaoZhunForm extends Component {
 }
 
 const WrappedAddJiFeiBiaoZhunForm = Form.create()(AddJiFeiBiaoZhunForm);
+
+class AddTiChengBiaoZhunForm extends Component {
+    submit = (e) => {
+        e.preventDefault();
+        this.props.form.validateFields((err, values) => {
+            console.log(values)
+            if (!err) {
+                const data = {
+                    xiangMuId: this.props.xiangMu.id,
+                    yongHuId: values.yongHuId,
+                    // 因为有时区的问题, 只能用以下方式强制转换成固定的字符串明确所选的日期
+                    kaiShi: moment(values.kaiShi._d).format('YYYY-MM-DD'),
+                    xiaoShiTiCheng: values.xiaoShiTiCheng,
+                }
+
+                PPAxios.httpPost(`${GlobalValue.RootUrl}admin/addXiangMuTiChengBiaoZhun`, data)
+                    .then(() => {
+                        message.success("提成标准添加成功.", 5)
+
+                        this.props.form.resetFields();
+
+                        // 刷新当前编辑项目
+                        PubSub.publish(Event.REFRESH_EDITING_XIANGMU)
+                    })
+            }
+        });
+    }
+
+    renderOptions = () => {
+        return this.props.options.map(item => (
+            <Option value={item.id} key={item.id}>{item.yongHuMing}</Option>
+        ))
+    }
+
+    render = () => {
+        const {getFieldDecorator} = this.props.form;
+
+        return (
+            <Form onSubmit={this.submit}>
+                <Form.Item label="成员" labelCol={{span: 4}} wrapperCol={{span: 10}}>
+                    {getFieldDecorator('yongHuId', {
+                        rules: [{required: true, message: '成员必填!'}],
+                    })(<Select>
+                        {this.renderOptions()}
+                    </Select>)}
+                </Form.Item>
+                <Form.Item
+                    label="开始日期"
+                    labelCol={{span: 4}}
+                    wrapperCol={{span: 10}}
+                >
+                    {getFieldDecorator('kaiShi', {
+                        rules: [{required: true, message: '开始日期必填!'}],
+                    })(
+                        <DatePicker/>
+                    )}
+                </Form.Item>
+                <Form.Item
+                    label="小时提成"
+                    labelCol={{span: 4}}
+                    wrapperCol={{span: 10}}
+                >
+                    {getFieldDecorator('xiaoShiTiCheng', {
+                        rules: [{required: true, message: '小时提成必填!'}]
+                    })(
+                        <InputNumber min={0}/>
+                    )}
+
+                </Form.Item>
+                <Row>
+                    <Col span={24} style={{textAlign: 'right'}}>
+                        <Button type="primary" htmlType="submit">添加</Button>
+                    </Col>
+                </Row>
+            </Form>
+        )
+    }
+}
+
+const WrappedAddTiChengBiaoZhunForm = Form.create()(AddTiChengBiaoZhunForm);
 
 export default XiangMu

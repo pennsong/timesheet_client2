@@ -6,6 +6,7 @@ import {
 import moment from 'moment';
 
 import GongZuoJiLu from "./GongZuoJiLu";
+import YongHuBaoGao from "./YongHuBaoGao";
 import * as PubSub from "pubsub-js";
 import * as Event from "../../util/Event";
 import * as PPAxios from "../../util/PPAxios";
@@ -18,6 +19,29 @@ const {
 class User extends React.Component {
     state = {
         editModalVisible: false,
+        defaultMenuItemKey: '1'
+    }
+    componentWillMount() {
+        let path = this.props.location.pathname.toLowerCase();
+        let end = path.length;
+        // 要求：path不能为 /User/xxxx 以外的格式
+        for(let i = 6; i < path.length; i++) {
+            if(path[i] == '/' || path[i] == '?' || path[i] == '#' || path[i] == '&') {
+                end = i;
+                break;
+            }
+        }
+        path = path.substring(0, end);
+        let path2key = {
+            '/user/gongzuojilu': '1',
+            '/user/yonghubaogao': '2',
+        }
+        this.setDefaultMenuItem(path2key[path] || '1');
+    }
+    setDefaultMenuItem(activeMenuItemKey) {
+        this.setState({
+            defaultMenuItemKey: activeMenuItemKey
+        })
     }
 
     render() {
@@ -33,7 +57,7 @@ class User extends React.Component {
                         justifyContent: 'flex-start'
                     }}>
                         <Menu
-                            defaultSelectedKeys={['1']}
+                            defaultSelectedKeys={[this.state.defaultMenuItemKey]}
                             defaultOpenKeys={['sub1']}
                             mode="inline"
                             theme="dark"
@@ -42,6 +66,12 @@ class User extends React.Component {
                                 <NavLink exact activeClassName="active" to="/User/GongZuoJiLu">
                                     <Icon type="file-text"/>
                                     <span>工作记录</span>
+                                </NavLink>
+                            </Menu.Item>
+                            <Menu.Item key="2">
+                                <NavLink exact activeClassName="active" to="/User/YongHuBaoGao">
+                                    <Icon type="table"/>
+                                    <span>用户报告</span>
                                 </NavLink>
                             </Menu.Item>
                         </Menu>
@@ -60,6 +90,7 @@ class User extends React.Component {
                 <Layout>
                     <Content style={{margin: '16px 16px'}}>
                         <Route path="/User/GongZuoJiLu" component={GongZuoJiLu}/>
+                        <Route path="/User/YongHuBaoGao" component={YongHuBaoGao} />
                     </Content>
                     <Footer style={{textAlign: 'center'}}>
                         Timesheet ©{moment().format('YYYY')} Created by {`${GlobalValue.COMPANY}`}

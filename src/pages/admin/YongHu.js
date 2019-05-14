@@ -42,6 +42,12 @@ class YongHu extends Component {
                 label: "小时费用",
                 type: InputType.INPUT,
                 rules: [{required: true, message: '小时费用必填!'}]
+            },
+            {
+                key: "xiaoShiTiCheng",
+                label: "小时提成",
+                type: InputType.INPUT,
+                rules: [{required: true, message: '小时提成必填!'}]
             }
         ]
     }
@@ -59,6 +65,10 @@ class YongHu extends Component {
             title: '小时费用',
             dataIndex: 'xiaoShiFeiYong',
             key: 'xiaoShiFeiYong',
+        }, {
+            title: '小时提成',
+            dataIndex: 'xiaoShiTiCheng',
+            key: 'xiaoShiTiCheng',
         }, {
             title: 'Action',
             key: 'action',
