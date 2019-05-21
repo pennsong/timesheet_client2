@@ -79,7 +79,7 @@ class GongZuoJiLu extends Component {
             const date = ppFormatDate(fields[2]);
             const kaiShi = ppFormatTime(fields[3]);
             const jieShu = ppFormatTime(fields[4]);
-            const beiZhu = item.substr(item.lastIndexOf(jieShu) + jieShu.length).trim();
+            const beiZhu = item.substr(item.lastIndexOf(fields[4]) + fields[4].length).trim();
 
             return {
                 xiangMuMingCheng: fields[0],
