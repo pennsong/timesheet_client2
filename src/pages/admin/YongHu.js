@@ -52,6 +52,28 @@ class YongHu extends Component {
         ]
     }
 
+    recordEditFormConfig = {
+        fields: [
+            {
+                key: "yongHuId",
+                field: 'id',
+                type: InputType.HIDDEN
+            },
+            {
+                key: "xiaoShiFeiYong",
+                label: "小时费用",
+                type: InputType.INPUT,
+                rules: [{required: true, message: '小时费用必填!'}]
+            },
+            {
+                key: "xiaoShiTiCheng",
+                label: "小时提成",
+                type: InputType.INPUT,
+                rules: [{required: true, message: '小时提成必填!'}]
+            }
+        ]
+    }
+
     tableConfig = {
         column: [{
             title: 'id',
@@ -75,8 +97,12 @@ class YongHu extends Component {
             render: (text, record, index) => (
                 <span>
                      <a href="javascript:;" onClick={() => {
-                         this.openEditwModal(record)
+                         this.openEditModal(record)
                      }}>新密码</a>
+                    <Divider type="vertical"/>
+                    <a href="javascript:;" onClick={(e) => {
+                        this.tablePage.openEditModal(e, record)
+                    }}>修改费用和提成</a>
                     <Divider type="vertical"/>
                     <a href="javascript:;" onClick={() => this.tablePage.delete(record.id)}>删除</a>
              </span>
@@ -84,7 +110,7 @@ class YongHu extends Component {
         }],
     }
 
-    openEditwModal = (yongHu) => {
+    openEditModal = (yongHu) => {
         this.setState({
             editModalVisible: true,
             yongHu,
@@ -106,10 +132,13 @@ class YongHu extends Component {
                     title='用户'
                     searchDataUrl={'admin/queryYongHu'}
                     saveNewUrl={'admin/createYongHu'}
+                    saveEditUrl={'admin/setYongHuFeiYongBiaoZhun'}
                     deleteUrl={'admin/deleteYongHu/'}
                     pageTitle={'用户'}
                     newText={'新建'}
+                    editText={'修改'}
                     recordNewFormConfig={this.recordNewFormConfig}
+                    recordEditFormConfig={this.recordEditFormConfig}
                     tableConfig={this.tableConfig}
                 />
             </div>

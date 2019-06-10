@@ -40,6 +40,10 @@ class BaseForm extends Component {
                 return this.renderTextArea(item);
             }
 
+            if(item.type == InputType.HIDDEN) {
+                return this.renderHidden(item);
+            }
+
             console.error("未处理的InputType");
             return null
         });
@@ -57,6 +61,7 @@ class BaseForm extends Component {
         return (
             <Form.Item {...formItemLayout} {...item.formItemLayout} label={item.label} key={item.key}>
                 {getFieldDecorator(item.key, {
+                    initialValue: item.initialValue,
                     rules: item.rules
                 })(
                     <Select>
@@ -75,6 +80,7 @@ class BaseForm extends Component {
         return (
             <Form.Item {...formItemLayout} {...item.formItemLayout} label={item.label} key={item.key}>
                 {getFieldDecorator(item.key, {
+                    initialValue: item.initialValue,
                     rules: item.rules
                 })(<Input/>)}
             </Form.Item>
@@ -87,9 +93,21 @@ class BaseForm extends Component {
         return (
             <Form.Item {...formItemLayout} {...item.formItemLayout} label={item.label} key={item.key}>
                 {getFieldDecorator(item.key, {
+                    initialValue: item.initialValue,
                     rules: item.rules
                 })(<TextArea rows={item.rows}/>)}
             </Form.Item>
+        );
+    }
+
+    renderHidden(item) {
+        const {getFieldDecorator} = this.props.form;
+        return (
+            <div key={item.key}>
+                {getFieldDecorator(item.key, {
+                    initialValue: item.initialValue
+                })(<Input type="hidden"/>)}
+            </div>
         );
     }
 

@@ -310,7 +310,7 @@ class XiangMu extends Component {
                 {this.renderEditModal()}
                 <TablePage
                     ref={(ref) => this.tablePage = ref}
-                    title='公司'
+                    title='项目'
                     searchDataUrl={'admin/queryXiangMu'}
                     saveNewUrl={'admin/createXiangMu'}
                     deleteUrl={'admin/deleteXiangMu/'}

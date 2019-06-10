@@ -7,6 +7,7 @@ import {
 import PPForm from "./PPForm";
 import * as PPAxios from "../util/PPAxios";
 import * as GlobalValue from "../util/GlobalValue";
+import * as InputType from "../util/InputType";
 
 const {Option} = Select;
 const confirm = Modal.confirm;
@@ -17,6 +18,7 @@ class TablePage extends Component {
         size: null,
         page: null,
         data: [],
+        editData: null,
         newModalVisible: false,
         editModalVisible: false,
     }
@@ -54,10 +56,11 @@ class TablePage extends Component {
         });
     }
 
-    openEditModal = (e) => {
+    openEditModal = (e, editData) => {
         e.preventDefault()
         this.setState({
             editModalVisible: true,
+            editData: editData
         });
     }
 
@@ -98,8 +101,24 @@ class TablePage extends Component {
 
 
     // 编辑保存
-    saveEdit = () => {
+    saveEdit = (values) => {
+        if (this.props.processEditData) {
+            try {
+                values = this.props.processEditData(values);
+            } catch (e) {
+                message.error("数据解析错误!", 5);
+                return;
+            }
+        }
 
+        PPAxios.httpPost(`${GlobalValue.RootUrl}${this.props.saveEditUrl}`, values)
+            .then((response) => {
+                this.searchData();
+                message.success("修改成功!");
+                this.closeEditModal();
+            })
+            .catch((error) => {
+            })
     }
 
     // 删除
@@ -196,7 +215,13 @@ class TablePage extends Component {
 
     renderEditForm() {
         if (this.props.recordEditFormConfig) {
-            return <PPForm formConfig={this.props.recordEditFormConfig} submit={this.saveEdit}/>
+            let editformConfig = Object.assign({}, this.props.recordEditFormConfig);
+            if(this.state.editData) {
+                editformConfig.fields.forEach(f => {
+                    f.initialValue = this.state.editData[f.field || f.key];
+                });
+            }
+            return <PPForm formConfig={editformConfig} submit={this.saveEdit}/>
         } else
         {
             return null;
@@ -217,8 +242,8 @@ class TablePage extends Component {
                     </div>
                 </Modal>
                 <Modal visible={this.state.editModalVisible}
-                       onCancel={this.closeNewModal}
-                       title={this.props.newText + this.props.title}
+                       onCancel={this.closeEditModal}
+                       title={this.props.editText + this.props.title}
                        footer={null}
                        destroyOnClose={true}
                 >
