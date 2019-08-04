@@ -75,6 +75,7 @@ class YongHuBaoGao extends Component {
                     {this.renderSection("结束")}
                     {this.renderSection("期初Balance")}
                     {this.renderSection("期末Balance")}
+                    {this.renderSection("项目汇总")}
                     {this.renderSection("提成记录")}
                     {this.renderSection("工作记录")}
                 </div>
@@ -126,6 +127,10 @@ class YongHuBaoGao extends Component {
     }
 
     renderArrayBody(sectionName) {
+        if (sectionName == "项目汇总") {
+            return this.renderXiangMuHuiZongJiLu()
+        }
+
         if (sectionName == "提成记录") {
             return this.renderTiChengJiLu()
         }
@@ -135,6 +140,52 @@ class YongHuBaoGao extends Component {
         }
 
         return null;
+    }
+
+    renderXiangMuHuiZongJiLu() {
+        let total_haoshi = 0;
+        let total_shouru = 0;
+        this.state.reportData.项目汇总.forEach(item => {
+            total_haoshi += item.耗时;
+            total_shouru += item.收入;
+        })
+
+        return (
+            <table className={'report'}>
+                <thead>
+                <tr>
+                    <td><div>公司</div></td>
+                    <td><div>项目</div></td>
+                    <td><div>耗时</div></td>
+                    <td><div>收入</div></td>
+                </tr>
+                </thead>
+                <tbody>
+                {
+                    this.state.reportData.项目汇总.map(
+                        (item, index) => {
+                            return (
+                                <tr key={index}>
+                                    <td><div>{item.公司}</div></td>
+                                    <td><div>{item.项目}</div></td>
+                                    <td><div>{toDecimal2(item.耗时)}</div></td>
+                                    <td><div>{toDecimal2(item.收入)}</div></td>
+                                </tr>
+                            )
+                        }
+                    )
+                }
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colSpan={2}><div>合计</div></td>
+                    <td><div>{toDecimal2(total_haoshi)}</div></td>
+                    <td><div>{toDecimal2(total_shouru)}</div></td>
+                </tr>
+                </tfoot>
+            </table>
+
+        )
     }
 
     renderTiChengJiLu() {

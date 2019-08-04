@@ -103,6 +103,7 @@ class GongSiBaoGao extends Component {
                     {this.renderSection("结束")}
                     {this.renderSection("期初Balance")}
                     {this.renderSection("期末Balance")}
+                    {this.renderSection("项目汇总")}
                     {this.renderSection("充值记录")}
                     {this.renderSection("消费记录")}
                     {/*<div>充值记录:</div>*/}
@@ -158,6 +159,10 @@ class GongSiBaoGao extends Component {
     }
 
     renderArrayBody(sectionName) {
+        if (sectionName == "项目汇总") {
+            return this.renderXiangMuHuiZongJiLu()
+        }
+
         if (sectionName == "充值记录") {
             return this.renderChongZhiJiLu()
         }
@@ -167,6 +172,50 @@ class GongSiBaoGao extends Component {
         }
 
         return null;
+    }
+
+    renderXiangMuHuiZongJiLu(){
+        let total_haoshi = 0;
+        let total_feiyong = 0;
+        this.state.reportData.项目汇总.forEach(item => {
+            total_haoshi += item.耗时;
+            total_feiyong += item.费用;
+        })
+
+        return (
+            <table className={'report'}>
+                <thead>
+                <tr>
+                    <td><div>项目</div></td>
+                    <td><div>耗时</div></td>
+                    <td><div>费用</div></td>
+                </tr>
+                </thead>
+                <tbody>
+                {
+                    this.state.reportData.项目汇总.map(
+                        (item, index) => {
+                            return (
+                                <tr key={index}>
+                                    <td><div>{item.项目}</div></td>
+                                    <td><div>{toDecimal2(item.耗时)}</div></td>
+                                    <td><div>{toDecimal2(item.费用)}</div></td>
+                                </tr>
+                            )
+                        }
+                    )
+                }
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td><div>合计</div></td>
+                    <td><div>{toDecimal2(total_haoshi)}</div></td>
+                    <td><div>{toDecimal2(total_feiyong)}</div></td>
+                </tr>
+                </tfoot>
+            </table>
+
+        )
     }
 
     renderChongZhiJiLu() {
